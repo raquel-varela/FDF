@@ -6,7 +6,7 @@
 #    By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/03 11:30:21 by rvarela-          #+#    #+#              #
-#    Updated: 2024/03/16 11:28:04 by rvarela          ###   ########.fr        #
+#    Updated: 2024/03/24 10:28:48 by rvarela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LIBFT_DIR = ./Libft
 LIBMLX = ./mlx/libmlx.a
 MLX_DIR = ./mlx
 
-SRC = main.c
+SRC = main.c handle_errors.c
 
 
 

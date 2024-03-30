@@ -1,71 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/03/30 08:51:38 by rvarela          ###   ########.fr       */
+/*   Created: 2024/03/30 08:53:03 by rvarela           #+#    #+#             */
+/*   Updated: 2024/03/30 09:10:01 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fdf.h"
+#include "fdf.h"
 
-char	read_map(char *file)
+static int	get_height(char *file)
 {
-	char	*line;
 	int		fd;
-	t_map	**map;
-	int		i;
+	int		height;
+	char	*line;
 
-	line = NULL;
+	height = 0;
 	fd = open(file, O_RDONLY, 0);
 	if (fd == -1)
 		error_msg("Failed to open the file!");
-	i = 0;
+	line = get_next_line(fd);
+	if (line)
+		height++;
 	while (line)
 	{
-		map[i] = ft_split(line);
 		line = get_next_line(fd);
-		i++;
+		height++;
+		free(line);
 	}
-
+	close (fd);
+	return (height);
 }
 
-
-
-
-
-int	main(int ac, char **av)
+get_map(t_map *data_map, char *file)
 {
-	t_map	*data_map;
+	int	fd;
+	int	i;
+	char *tmp;
 
-	input_check(ac, av);
-	data_map = (t_map *)malloc(sizeof t_map);
-	if (!data_map)
-		error_msg("Failed to create data!");
-	get_map(data_map, av[1]);
+	i = 0;
+	data_map->height = get_height(file);
+
+
+
+
+
+
 
 
 	
-
-		
-
-		
-	read_map(av[1]);
-
-
-		
-    if (error_check(ac, av) == 0)
-		//Function DRAW MAP
-		//read map
-			//read line
-			//split line
-			//matrix
-
-
-			
-	else
-		return (0);
 }
