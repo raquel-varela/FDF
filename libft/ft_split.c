@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:15:24 by rvarela           #+#    #+#             */
-/*   Updated: 2024/03/22 16:51:17 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:57:49 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char *str, char sep)
+int	count_words(char *str, char sep)
 {
 	int	i;
 	int	words;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:15:19 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/03/22 16:51:54 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:58:22 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*Other functions*/
-char    *ft_strncpy(char *s1, char *s2, int n);
+char	*ft_strncpy(char *s1, char *s2, int n);
+int		count_words(char *str, char sep);
 
 #endif

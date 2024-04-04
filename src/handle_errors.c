@@ -6,7 +6,7 @@
 /*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 09:44:23 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/03/30 08:32:25 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/01 22:24:52 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,30 @@ void	input_check(int ac, char **av)
 	if (len < 4)
 		error_msg("The input file name is very short.");
 	if (ft_strncmp(av[1] + len - 4, ".fdf", 4) != 0)
-		error_msg("Wrnog extension. Not a .fdf file!");
+		error_msg("Wrong extension. Not a .fdf file!");
+}
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+}
+
+void	free_matrix(t_map *data, int i)
+{
+	free_tab(data->char_map);
+	while (i >= 0)
+	{
+		if (data->z_matrix[i])
+		{
+			free(data->z_matrix[i]);
+			i--;
+		}
+		free(data->z_matrix);
+		free(data);
+	}
 }

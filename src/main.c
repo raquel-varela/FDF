@@ -6,7 +6,7 @@
 /*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/03/30 08:51:38 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/01 21:48:40 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	main(int ac, char **av)
 	data_map = (t_map *)malloc(sizeof t_map);
 	if (!data_map)
 		error_msg("Failed to create data!");
-	get_map(data_map, av[1]);
+	get_char_map(data_map, av[1]);
+	get_z(data_map);
 
 
 	
