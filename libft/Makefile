@@ -6,7 +6,7 @@
 #    By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/15 16:32:34 by rvarela           #+#    #+#              #
-#    Updated: 2024/03/23 09:24:17 by rvarela-         ###   ########.fr        #
+#    Updated: 2024/04/05 16:35:48 by rvarela-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC = 		ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c \
 			ft_tolower.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
 			ft_strtrim.c ft_split.c ft_itoa.c ft_striteri.c ft_strmapi.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-			ft_printf/ft_printf.c /ft_printf/ft_printf_auxf.c \
+			ft_atoi_hex.c ft_strncpy.c \
+			ft_printf/ft_printf.c ft_printf/ft_printf_auxf.c \
 			gnl/get_next_line.c gnl/get_next_line_utils.c
 
 SRC_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \

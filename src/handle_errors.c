@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handle_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 09:44:23 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/01 22:24:52 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/05 15:06:05 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	error_msg(char *msg)
 {
@@ -60,4 +60,10 @@ void	free_matrix(t_map *data, int i)
 		free(data->z_matrix);
 		free(data);
 	}
+}
+
+void	free_matrix_error(t_map	*data, int i, char *msg)
+{
+	free_matrix(data, i);
+	error_msg(msg);
 }

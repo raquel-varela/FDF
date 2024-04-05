@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 09:52:17 by rvarela-          #+#    #+#             */
-/*   Updated: 2023/12/22 18:50:36 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:11:39 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+/*char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -58,4 +58,4 @@ char	*ft_strchr(char *str, char c)
 	if (*str == c)
 		return (str);
 	return (0);
-}
+}*/

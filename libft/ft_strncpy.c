@@ -6,7 +6,7 @@
 /*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:50:25 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/03/22 16:51:14 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:29:31 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char    *ft_strncpy(char *s1, char *s2, int n)
 	int	i;
 
 	i = 0;
-	s1 = (char *)malloc(sizeof(char) * (n + 1));
+	s1 = (char *)malloc(sizeof(char) * n + 1);
 	if (!s1)
 		return (NULL);
 	while (s2[i] && i < n)

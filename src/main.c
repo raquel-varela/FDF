@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/01 21:48:40 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:04:51 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fdf.h"
+#include "../includes/fdf.h"
 
-char	read_map(char *file)
+/*char	read_map(char *file)
 {
 	char	*line;
 	int		fd;
@@ -24,14 +24,14 @@ char	read_map(char *file)
 	if (fd == -1)
 		error_msg("Failed to open the file!");
 	i = 0;
-	while (line)
+	while (1)
 	{
-		map[i] = ft_split(line);
+		map[i] = ft_split(line, ' ');
 		line = get_next_line(fd);
 		i++;
 	}
 
-}
+}*/
 
 
 
@@ -40,33 +40,20 @@ char	read_map(char *file)
 int	main(int ac, char **av)
 {
 	t_map	*data_map;
+	int		i;
 
 	input_check(ac, av);
-	data_map = (t_map *)malloc(sizeof t_map);
+	data_map = (t_map *)malloc(sizeof(t_map));
 	if (!data_map)
 		error_msg("Failed to create data!");
 	get_char_map(data_map, av[1]);
 	get_z(data_map);
-
-
-	
-
-		
-
-		
-	read_map(av[1]);
-
-
-		
-    if (error_check(ac, av) == 0)
-		//Function DRAW MAP
-		//read map
-			//read line
-			//split line
-			//matrix
-
-
-			
-	else
-		return (0);
+	i = 0;
+	while (data_map->z_matrix[i])
+	{
+		ft_printf("x = %i\n", (*data_map->z_matrix[i]).x);
+		ft_printf("y = %i\n", (*data_map->z_matrix[i]).y);
+		ft_printf("z = %i\n", (*data_map->z_matrix[i]).z);
+		i++;
+	}
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 08:53:03 by rvarela           #+#    #+#             */
-/*   Updated: 2024/04/01 22:33:37 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:32:41 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 static int	get_height(char *file)
 {
@@ -53,20 +53,33 @@ void	get_char_map(t_map *data_map, char *file)
 	while (data_map->char_map[i])
 	{
 		tmp = get_next_line(fd);
-		data_map->char_map[++i] = ft_strtrim(tmp, "\n");
+		data_map->char_map[i] = ft_strtrim(tmp, "\n");
 		free (tmp);
+		i++;
 	}
-	//dont have to put de null?
+	data_map->char_map[i] = NULL;
 	close (fd);
 }
 
-void	z_line_split(t_map *z_matrix, char *line)
+static void	z_line_split(t_point *matrix, char *line)
 {
-	
+	char	**z_coord;
+	int		i;
 
-
-
-	
+	z_coord = ft_split(line, ' ');
+	i = 0;
+	while (z_coord[i])
+	{
+		matrix[i].x = 0;
+		matrix[i].y = 0;
+		matrix[i].z = ft_atoi(z_coord[i]);
+		if (!ft_strchr(z_coord[i], ','))
+			matrix[i].color = WHITE;
+		else
+			matrix[i].color = ft_atoi_hex(ft_strchr(z_coord[i], ',') + 3);
+		i++;
+	}
+	free_tab(z_coord);
 }
 
 
@@ -84,21 +97,17 @@ void	get_z(t_map *data_map)
 	first_znbr = 0;
 	while (data_map->char_map[i])
 	{
-		curr_znbr = count_words(data_map->char_map[i], " ");
+		curr_znbr = count_words(data_map->char_map[i], ' ');
 		if (first_znbr == 0)
 			first_znbr = curr_znbr;
-		if (curr_znbr != first_znbr)
-		{
-			free_matrix(data_map, i - 1);
-			error_msg("Invalid map! Different size between rows.");
-		}
+		else if (curr_znbr != first_znbr)
+			free_matrix_error(data_map, i - 1, "Error:Diff size between rows.");
 		data_map->z_matrix[i] = (t_point *)malloc(sizeof(t_point) * curr_znbr);
 		if (!data_map->z_matrix[i])
-		{
-			free_matrix(data_map, i);
-			error_msg("Failled allocation of memory for line of points.");
-		}
+			free_matrix_error(data_map, i - 1, "Failled alloc for line of points.");
 		z_line_split(data_map->z_matrix[i], data_map->char_map[i]);
 		i++;
 	}
+	free_tab(data_map->char_map);
+	data_map->width = curr_znbr;
 }
