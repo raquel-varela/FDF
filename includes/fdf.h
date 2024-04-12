@@ -6,7 +6,7 @@
 /*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:34:29 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/05 15:21:19 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:15:39 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <errno.h>
 # include <math.h>
 
-# define WITH 1920
+# define WIDTH 1920
 # define HEIGHT 1200
 # define WHITE 0x00FFFFFF
 
@@ -33,13 +33,6 @@ typedef struct s_point
 	int	color;
 }	t_point;
 
-typedef struct s_img
-{
-	int	width;
-	int	height;
-
-	
-}	t_img;
 
 typedef struct s_map
 {
@@ -49,8 +42,25 @@ typedef struct s_map
 	t_point	**z_matrix;
 }	t_map;
 
+typedef struct s_bresenhams
+{
+	int	x0;
+	int	y0;
+	int	dx;
+	int	dy;
+
+	
+}	t_bresenhams;
 
 
+
+typedef struct s_img
+{
+	int	width;
+	int	height;
+
+	
+}	t_img;
 
 //Handle errors
 void	error_msg(char *msg);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:34:10 by rvarela-          #+#    #+#             */
-/*   Updated: 2023/12/22 22:09:39 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:19:39 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	*ft_get_line(int fd, char *buffer_tmp)
 	if (!buffer)
 		return (NULL);
 	n_chars = 1;
-	while (n_chars != 0 && !ft_strchr(buffer_tmp, '\n'))
+	while (n_chars != 0 && !ft_strchr_gnl(buffer_tmp, '\n'))
 	{
 		n_chars = read(fd, buffer, BUFFER_SIZE);
 		if (n_chars == -1)
@@ -62,7 +62,7 @@ static char	*ft_get_line(int fd, char *buffer_tmp)
 			return (NULL);
 		}
 		buffer[n_chars] = '\0';
-		buffer_tmp = ft_strjoin(buffer_tmp, buffer);
+		buffer_tmp = ft_strjoin_gnl(buffer_tmp, buffer);
 	}
 	free(buffer);
 	return (buffer_tmp);
@@ -83,7 +83,7 @@ static char	*ft_get_last(char *buffer_tmp)
 		free (buffer_tmp);
 		return (NULL);
 	}
-	last = (char *)malloc(sizeof(char) * (ft_strlen(buffer_tmp) - i + 1));
+	last = (char *)malloc(sizeof(char) * (strlen_gnl(buffer_tmp) - i + 1));
 	if (!last)
 		return (NULL);
 	j = 0;
@@ -118,7 +118,7 @@ char	*get_next_line(int fd)
 	char	*line;
 	int		i;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("42.fdf", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("Error opening file!\n");

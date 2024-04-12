@@ -6,7 +6,7 @@
 /*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 08:53:03 by rvarela           #+#    #+#             */
-/*   Updated: 2024/04/05 16:32:41 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/12 15:35:25 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	get_height(char *file)
 		free(line);
 	}
 	close (fd);
-	return (height);
+	return (height - 1);
 }
 
 void	get_char_map(t_map *data_map, char *file)
@@ -49,12 +49,12 @@ void	get_char_map(t_map *data_map, char *file)
 	fd = open(file, O_RDONLY, 0);
 	if (fd == -1)
 		error_msg("Failed to open the file!");
-	data_map->char_map[0] = get_next_line(fd);
-	while (data_map->char_map[i])
+	data_map->char_map[0] = "init";
+	while (i < data_map->height)
 	{
 		tmp = get_next_line(fd);
 		data_map->char_map[i] = ft_strtrim(tmp, "\n");
-		free (tmp);
+		free(tmp);
 		i++;
 	}
 	data_map->char_map[i] = NULL;

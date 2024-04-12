@@ -6,13 +6,13 @@
 /*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 09:52:17 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/05 16:11:39 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/12 14:20:54 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	strlen_gnl(const char *str)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-/*char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -35,7 +35,7 @@ size_t	ft_strlen(const char *str)
 		s1 = malloc(sizeof(char) * 1);
 		s1[0] = '\0';
 	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	str = (char *)malloc(sizeof(char) * (strlen_gnl(s1) + strlen_gnl(s2)) + 1);
 	if (!str)
 		return (NULL);
 	i = -1;
@@ -49,7 +49,7 @@ size_t	ft_strlen(const char *str)
 	return (str);
 }
 
-char	*ft_strchr(char *str, char c)
+char	*ft_strchr_gnl(char *str, char c)
 {
 	if (!str)
 		return (0);
@@ -58,4 +58,4 @@ char	*ft_strchr(char *str, char c)
 	if (*str == c)
 		return (str);
 	return (0);
-}*/
+}
