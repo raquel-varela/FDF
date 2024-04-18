@@ -3,20 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/12 15:36:31 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/17 21:58:00 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
+t_img	new_img(t_map data)
+{
+	t_img	img;
+
+	img.img_ptr = mlx_new_image(data.mlx_ptr, WIDTH, HEIGHT);
+	if (!img.img_ptr)
+		error_msg("Failled to create an image!");
+	img.addr = mlx_get_data_addr(img.img_ptr, &img.bpp, &img.line_len, \
+		&img.endian);
+	img.width = WIDTH;
+	img.height = HEIGHT;
+	return (img);
+}
+
+void	new_fdf_window(t_map *data)
+{
+	data->mlx_ptr = mlx_init();
+	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT,
+			data->map_name);
+	if (!data->mlx_ptr)
+		return (1);
+	if (!data->win_ptr)
+	{
+		free (data->win_ptr);
+		return (1);
+	}
+}
+
+int	exit_window(t_map *window)
+{
+	if (window)
+		mlx
+}
+
+static int	read_keys(int key_pressed, void *param)
+{
+	t_map	*win;
+
+	win = (t_map *)param;
+	if (key_pressed == ESC || !win)
+		exit_window(win);
+	return (0);
+}
+
+int	exit_window(t_map *win)
+{
+	if (win)
+	{
+		mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
+		mlx_destroy_window(win->mlx_ptr, win->win_ptr);
+		mlx_destroy_display(win->mlx_ptr);
+		free(win->mlx_ptr);
+		free(win);
+		exit(EXIT_SUCCESS);
+	}
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
 	t_map	*data_map;
-	int		i;
 
 	input_check(ac, av);
 	data_map = (t_map *)malloc(sizeof(t_map));
@@ -24,7 +80,19 @@ int	main(int ac, char **av)
 		error_msg("Failed to create data!");
 	get_char_map(data_map, av[1]);
 	get_z(data_map);
-	i = 0;
+	data_map->map_name = ft_strjoin("rvarela-   FDF map: ", av[1]);
+	new_fdf_window(data_map);
+	data_map->img = new_img(*data_map);
+	draw_map(data_map);
+	mlx_put_image_to_window(data_map->mlx_ptr, data_map->win_ptr, \
+		data_map->img.img_ptr, 0, 0);
+	mlx_key_hook(data_map->win_ptr, &read_keys, data_map);
+	mlx_hook(data_map->mlx_ptr, 17, 0, exit_window, data_map);
+	mlx_loop(data_map->mlx_ptr);
+	free(data_map);
+	exit(EXIT_SUCCESS);
+}
+
 	/*ft_printf("width = %i\n", (data_map->width));
 	ft_printf("height = %i\n", (data_map->height));
 	while (i < 5)
@@ -34,4 +102,3 @@ int	main(int ac, char **av)
 		ft_printf("z = %i\n", (data_map->z_matrix[2][i]).z);
 		i++;
 	}*/
-}

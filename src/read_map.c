@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 08:53:03 by rvarela           #+#    #+#             */
-/*   Updated: 2024/04/12 15:35:25 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:08:06 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void	z_line_split(t_point *matrix, char *line)
 	free_tab(z_coord);
 }
 
-
 void	get_z(t_map *data_map)
 {
 	int	i;
@@ -104,7 +103,7 @@ void	get_z(t_map *data_map)
 			free_matrix_error(data_map, i - 1, "Error:Diff size between rows.");
 		data_map->z_matrix[i] = (t_point *)malloc(sizeof(t_point) * curr_znbr);
 		if (!data_map->z_matrix[i])
-			free_matrix_error(data_map, i - 1, "Failled alloc for line of points.");
+			free_matrix_error(data_map, i - 1, "Fail alloc for points line.");
 		z_line_split(data_map->z_matrix[i], data_map->char_map[i]);
 		i++;
 	}
