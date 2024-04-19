@@ -6,7 +6,7 @@
 #    By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/03 11:30:21 by rvarela-          #+#    #+#              #
-#    Updated: 2024/04/12 16:05:43 by rvarela-         ###   ########.fr        #
+#    Updated: 2024/04/19 15:37:31 by rvarela-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fdf
 
 CFLAGS = -Wall -Werror -Wextra -g
 LIBFLAGS = ar -rcs
-#MLXFLAGS = -lmlx -lXext -lX11 -lbsd
+MLXFLAGS = -lmlx -lXext -lX11 -lbsd
 MKFLAG = --no-print-directory
 
 SRC_DIR = src
@@ -24,8 +24,8 @@ INC_DIR = includes
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft
 
-#LIBMLX = ./mlx/libmlx.a
-#MLX_DIR = ./mlx
+LIBMLX = ./mlx/libmlx.a
+MLX_DIR = ./mlx
 
 SRC = main.c handle_errors.c read_map.c bresenham_line.c\
 	draw_map.c

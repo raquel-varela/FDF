@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/17 21:58:00 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/19 14:09:37 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,7 @@ void	new_fdf_window(t_map *data)
 	}
 }
 
-int	exit_window(t_map *window)
-{
-	if (window)
-		mlx
-}
-
-static int	read_keys(int key_pressed, void *param)
-{
-	t_map	*win;
-
-	win = (t_map *)param;
-	if (key_pressed == ESC || !win)
-		exit_window(win);
-	return (0);
-}
-
-int	exit_window(t_map *win)
+static int	exit_window(t_map *win)
 {
 	if (win)
 	{
@@ -67,6 +51,16 @@ int	exit_window(t_map *win)
 		free(win);
 		exit(EXIT_SUCCESS);
 	}
+	return (0);
+}
+
+static int	read_keys(int key_pressed, void *param)
+{
+	t_map	*win;
+
+	win = (t_map *)param;
+	if (key_pressed == ESC || !win)
+		exit_window(win);
 	return (0);
 }
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:34:29 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/17 21:46:33 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/19 17:11:28 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-//# include "../mlx/mlx.h"
+# include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -65,8 +65,8 @@ typedef struct s_bresenham
 	int	y0;
 	int	dx;
 	int	dy;
-	int	slope_x;
-	int	slope_y;
+	int	step_x;
+	int	step_y;
 	int	p;
 }	t_bresenham;
 
