@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:34:29 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/19 17:11:28 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:45:23 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,11 @@ void	get_z(t_map *data_map);
 void	draw_map(t_map *data);
 void	draw_line(t_map *data, t_point *a, t_point *b);
 
-
-//init_mlx
-
 //transform map
 
 
-
+//utils
+void	put_pixel(t_img *img, int x, int y, int color);
+int		get_color(t_point *a, t_point *b);
 
 #endif
