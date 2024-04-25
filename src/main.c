@@ -6,13 +6,13 @@
 /*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/19 14:09:37 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/25 10:56:02 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_img	new_img(t_map data)
+static t_img	new_img(t_map data)
 {
 	t_img	img;
 
@@ -26,18 +26,11 @@ t_img	new_img(t_map data)
 	return (img);
 }
 
-void	new_fdf_window(t_map *data)
+static void	new_fdf_window(t_map *data)
 {
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT,
 			data->map_name);
-	if (!data->mlx_ptr)
-		return (1);
-	if (!data->win_ptr)
-	{
-		free (data->win_ptr);
-		return (1);
-	}
 }
 
 static int	exit_window(t_map *win)
@@ -74,25 +67,15 @@ int	main(int ac, char **av)
 		error_msg("Failed to create data!");
 	get_char_map(data_map, av[1]);
 	get_z(data_map);
-	data_map->map_name = ft_strjoin("rvarela-   FDF map: ", av[1]);
+	data_map->map_name = ft_strjoin("rvarela-   FDF map:    ", av[1]);
 	new_fdf_window(data_map);
 	data_map->img = new_img(*data_map);
 	draw_map(data_map);
 	mlx_put_image_to_window(data_map->mlx_ptr, data_map->win_ptr, \
 		data_map->img.img_ptr, 0, 0);
 	mlx_key_hook(data_map->win_ptr, &read_keys, data_map);
-	mlx_hook(data_map->mlx_ptr, 17, 0, exit_window, data_map);
+	mlx_hook(data_map->win_ptr, 17, 0, exit_window, data_map);
 	mlx_loop(data_map->mlx_ptr);
 	free(data_map);
 	exit(EXIT_SUCCESS);
 }
-
-	/*ft_printf("width = %i\n", (data_map->width));
-	ft_printf("height = %i\n", (data_map->height));
-	while (i < 5)
-	{
-		ft_printf("x = %i\n", (data_map->z_matrix[0][i]).x);
-		ft_printf("y = %i\n", (data_map->z_matrix[0][i]).y);
-		ft_printf("z = %i\n", (data_map->z_matrix[2][i]).z);
-		i++;
-	}*/

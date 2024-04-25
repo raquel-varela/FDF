@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:34:29 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/21 15:45:23 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/25 11:09:50 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1600
+# define HEIGHT 900
 # define WHITE 0x00FFFFFF
 # define ESC 65307
 
@@ -37,7 +37,6 @@ typedef struct s_point
 
 typedef struct s_img
 {
-	t_map	win;
 	int		width;
 	int		height;
 	void	*img_ptr;
@@ -86,7 +85,6 @@ void	draw_map(t_map *data);
 void	draw_line(t_map *data, t_point *a, t_point *b);
 
 //transform map
-
 
 //utils
 void	put_pixel(t_img *img, int x, int y, int color);
