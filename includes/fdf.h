@@ -6,7 +6,7 @@
 /*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:34:29 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/25 11:09:50 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:34:47 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	draw_map(t_map *data);
 void	draw_line(t_map *data, t_point *a, t_point *b);
 
 //transform map
+void    transform_map(t_map *data, t_point *a, t_point *b);
 
 //utils
 void	put_pixel(t_img *img, int x, int y, int color);

@@ -6,7 +6,7 @@
 #    By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/03 11:30:21 by rvarela-          #+#    #+#              #
-#    Updated: 2024/04/25 11:23:51 by rvarela-         ###   ########.fr        #
+#    Updated: 2024/04/26 13:30:59 by rvarela-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBMLX = mlx/libmlx.a
 MLX_DIR = mlx
 
 SRC = main.c handle_errors.c read_map.c bresenham_line.c\
-	draw_map.c fdf_utils.c
+	draw_map.c fdf_utils.c transform.c
 
 OBJ = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 
