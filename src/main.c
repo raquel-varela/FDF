@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/25 10:56:02 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:02:59 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,18 @@ static t_img	new_img(t_map data)
 static void	new_fdf_window(t_map *data)
 {
 	data->mlx_ptr = mlx_init();
+	if (!data->mlx_ptr)
+	{
+		free(data->mlx_ptr);
+		error_msg("Failled mlx init!");
+	}
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT,
-			data->map_name);
+			"data->map_name");
+	if (!data->win_ptr)
+	{
+		free(data->win_ptr);
+		error_msg("Failled to create new window!");
+	}
 }
 
 static int	exit_window(t_map *win)
@@ -67,7 +77,7 @@ int	main(int ac, char **av)
 		error_msg("Failed to create data!");
 	get_char_map(data_map, av[1]);
 	get_z(data_map);
-	data_map->map_name = ft_strjoin("rvarela-   FDF map:    ", av[1]);
+	//data_map->map_name = ft_strjoin("rvarela-   FDF map:    ", av[1]);
 	new_fdf_window(data_map);
 	data_map->img = new_img(*data_map);
 	draw_map(data_map);

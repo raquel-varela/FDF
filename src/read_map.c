@@ -6,7 +6,7 @@
 /*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 08:53:03 by rvarela           #+#    #+#             */
-/*   Updated: 2024/04/14 19:08:06 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/28 19:09:10 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	get_height(char *file)
 		free(line);
 	}
 	close (fd);
+	free(line);
 	return (height - 1);
 }
 

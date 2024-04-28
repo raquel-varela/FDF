@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:48:42 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/26 14:42:25 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:33:03 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	draw_y_line(t_map *data, int x, int y)
 	a.color = data->z_matrix[y][x].color;
 	b.x = x;
 	b.y = y + 1;
-	b.z = data->z_matrix[y + 1][x].x;
+	b.z = data->z_matrix[y + 1][x].z;
 	b.color = data->z_matrix[y + 1][x].color;
 	draw_line(data, &a, &b);
 }

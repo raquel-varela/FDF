@@ -6,7 +6,7 @@
 /*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:07:07 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/20 16:07:24 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/04/28 15:21:07 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_win new_program(int w, int h, char *str)
 	void	*mlx_ptr;
 
 	mlx_ptr = mlx_init();
-	return ((t_win) {mlx_ptr, mlx_new_window(mlx_ptr, w, h, str), w, h});
+	return ((t_win){mlx_ptr, mlx_new_window(mlx_ptr, w, h, str), w, h});
 }
 
 t_img	new_img(int w, int h, t_win window)
@@ -137,40 +137,48 @@ static void	bresenham(t_bresenham param, t_point a, t_point b, t_img img)
 		param.step_y *= -1;
 	param.x0 = a.x;
 	param.y0 = a.y;
-	if (param.dy <= param.dx)
+	if (abs(param.dy) <= abs(param.dx))
 	{
 		param.p = 2 * param.dy - param.dx;
-		while (param.x0 < b.x && param.x0 >= 0)
+		while (param.x0 != b.x && param.x0 >= 0)
 		{
 			put_pixel(&img, param.x0, param.y0, WHITE);
 			param.x0 += param.step_x;
+			printf("x0 = %i \n", param.x0);
 			if (param.p >= 0)
 			{
-				param.p += 2* param.dy- 2* param.dx;
+				param.p += (2 * param.dy - 2 * param.dx);
+				printf("p = %i \n", param.p);
 				param.y0 += param.step_y;
+				printf("y0 = %i \n", param.y0);
 			}
 			else
-				param.p += 2* param.dy;
+			{
+				param.p += (2 * param.dy);
+				printf("p = %i \n", param.p);
+			}
 		}
 	}
 	else
 	{
+		printf("aqui? \n");
+		printf("y0 = %i y = %i \n", param.y0, b.y);
 		param.p = 2 * param.dx - param.dy;
-		while (param.y0 < b.y && param.y0 >= 0)
+		while (param.y0 != b.y && param.y0 >= 0)
 		{
 			put_pixel(&img, param.x0, param.y0, WHITE);
 			param.y0 += param.step_y;
             printf("y0 = %i \n", param.y0);
 			if (param.p >= 0)
 			{
-				param.p += 2* param.dx - 2 * param.dy;
+				param.p += (2 * param.dx - 2 * param.dy);
                 printf("p = %i \n", param.p);
 				param.x0 += param.step_x;
                 printf("x0 = %i \n", param.x0);
 			}
 			else
             {
-				param.p += 2* param.dx;
+				param.p += (2* param.dx);
                 printf("p = %i \n", param.p);
             }
 		}
@@ -188,8 +196,8 @@ int main(void)
 	if (!tutorial.mlx_ptr || !tutorial.win_ptr)
 		return (1);
     image = new_img(300, 300, tutorial);
-    //put_pixel_img(image, 150, 150, 0x00FFFFFF);
-    bresenham((t_bresenham){}, (t_point){0, 0, 0, WHITE}, (t_point){100, 150, 0, WHITE}, image);
+    //put_pixel_img(image, 225, 20, 0x00FFFFFF);
+    bresenham((t_bresenham){}, (t_point){10, 0, 0, WHITE}, (t_point){240, 20, 0, WHITE}, image);
     mlx_put_image_to_window(image.win.mlx_ptr, image.win.win_ptr, image.img_ptr, 0, 0);
 	mlx_key_hook (tutorial.win_ptr, read_keys, &image);
     mlx_hook(tutorial.win_ptr, 17, 0, exit_tutorial, &tutorial);

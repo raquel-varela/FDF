@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 13:25:57 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/26 15:28:27 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/04/28 16:00:36 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	isometric_point(t_point *p)
 	x_orig = p->x;
 	y_orig = p->y;
 	p->x = (x_orig - y_orig) * cos(M_PI * 30 / 180);
-	p->y = (x_orig + y_orig) * sin(M_PI * 30 / 180) - p->z * 3;
+	p->y = (x_orig + y_orig) * sin(M_PI * 30 / 180) - p->z;
 }
 
 static void	scale_map(t_map *data, t_point *a, t_point *b)
@@ -44,8 +44,9 @@ static void	scale_map(t_map *data, t_point *a, t_point *b)
 		a->y = round(a->y * (scale_factor / 2));
 		b->x = round(b->x * (scale_factor / 2));
 		b->y = round(b->y * (scale_factor / 2));
-	}	
+	}
 }
+
 static void	center_map(t_point *a, t_point *b)
 {
 	a->x += WIDTH * 2 / 5;
@@ -54,10 +55,10 @@ static void	center_map(t_point *a, t_point *b)
 	b->y += HEIGHT / 5;
 }
 
-void    transform_map(t_map *data, t_point *a, t_point *b)
+void	transform_map(t_map *data, t_point *a, t_point *b)
 {
-    scale_map(data, a, b);
-    isometric_point(a);
-    isometric_point(b);
-    center_map(a, b);
+	scale_map(data, a, b);
+	isometric_point(a);
+	isometric_point(b);
+	center_map(a, b);
 }
