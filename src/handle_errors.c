@@ -6,7 +6,7 @@
 /*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 09:44:23 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/25 09:58:35 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:19:09 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	free_matrix(t_map *data, int i)
 			free(data->z_matrix[i]);
 			i--;
 		}
-		free(data->z_matrix);
-		free(data);
 	}
+	free(data->z_matrix);
+	free(data);
 }
 
 void	free_matrix_error(t_map	*data, int i, char *msg)

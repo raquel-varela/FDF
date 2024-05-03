@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/05/01 22:12:08 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/05/03 15:09:33 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ int	main(int ac, char **av)
 	mlx_key_hook(data_map->win_ptr, &read_keys, data_map);
 	mlx_hook(data_map->win_ptr, 17, 0, exit_window, data_map);
 	mlx_loop(data_map->mlx_ptr);
-	free(data_map);
 	exit(EXIT_SUCCESS);
 }

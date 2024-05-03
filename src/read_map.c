@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 08:53:03 by rvarela           #+#    #+#             */
-/*   Updated: 2024/05/01 22:23:01 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/05/03 15:04:30 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static int	get_height(char *file)
 		error_msg("Failed to open the file!");
 	line = get_next_line(fd);
 	if (line)
+	{
 		height++;
+		free(line);
+	}
 	while (line)
 	{
 		line = get_next_line(fd);
@@ -32,7 +35,6 @@ static int	get_height(char *file)
 		free(line);
 	}
 	close (fd);
-	free(line);
 	return (height - 1);
 }
 

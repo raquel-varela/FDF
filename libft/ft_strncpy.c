@@ -6,13 +6,13 @@
 /*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:50:25 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/05 16:29:31 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:23:36 by rvarela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strncpy(char *s1, char *s2, int n)
+char	*ft_strncpy(char *s1, char *s2, int n)
 {
 	int	i;
 
