@@ -6,7 +6,7 @@
 /*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:34:29 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/28 19:03:22 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/05/01 22:07:49 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
-	//char	*map_name;
+	char	*map_name;
 	char	**char_map;
 	t_point	**z_matrix;
 	t_img	img;

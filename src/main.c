@@ -6,7 +6,7 @@
 /*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:33:37 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/28 19:02:59 by rvarela          ###   ########.fr       */
+/*   Updated: 2024/05/01 22:12:08 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	new_fdf_window(t_map *data)
 		error_msg("Failled mlx init!");
 	}
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT,
-			"data->map_name");
+			data->map_name);
 	if (!data->win_ptr)
 	{
 		free(data->win_ptr);
@@ -51,6 +51,7 @@ static int	exit_window(t_map *win)
 		mlx_destroy_window(win->mlx_ptr, win->win_ptr);
 		mlx_destroy_display(win->mlx_ptr);
 		free(win->mlx_ptr);
+		free(win->map_name);
 		free(win);
 		exit(EXIT_SUCCESS);
 	}
@@ -77,7 +78,7 @@ int	main(int ac, char **av)
 		error_msg("Failed to create data!");
 	get_char_map(data_map, av[1]);
 	get_z(data_map);
-	//data_map->map_name = ft_strjoin("rvarela-   FDF map:    ", av[1]);
+	data_map->map_name = ft_strjoin("rvarela-   FDF map:    ", av[1]);
 	new_fdf_window(data_map);
 	data_map->img = new_img(*data_map);
 	draw_map(data_map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvarela- <rvarela-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvarela <rvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:34:10 by rvarela-          #+#    #+#             */
-/*   Updated: 2024/04/12 14:19:39 by rvarela-         ###   ########.fr       */
+/*   Updated: 2024/05/01 22:28:42 by rvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static char	*ft_get_last(char *buffer_tmp)
 	i = 0;
 	while (buffer_tmp[i] != '\0' && buffer_tmp[i] != '\n')
 		i++;
-	if (!buffer_tmp[i])
+	if (!buffer_tmp[i] || !buffer_tmp[i + 1] || buffer_tmp[i + 1] == '\n')
 	{
 		free (buffer_tmp);
 		return (NULL);
@@ -103,7 +103,10 @@ char	*get_next_line(int fd)
 	static char	*buffer_tmp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		free(buffer_tmp);
 		return (NULL);
+	}
 	buffer_tmp = ft_get_line(fd, buffer_tmp);
 	if (!buffer_tmp)
 		return (NULL);
